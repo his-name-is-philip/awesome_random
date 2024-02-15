@@ -120,8 +120,7 @@ class _MyHomePageState extends State<MyHomePage> {
             CupertinoSegmentedControl<int>(
               children: segmentHeaders,
               onValueChanged: (int i) {
-                selectedSegment = i;
-                setState(crutch);
+                setState((){selectedSegment = i;});
               },
               groupValue: selectedSegment,
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
@@ -133,12 +132,12 @@ class _MyHomePageState extends State<MyHomePage> {
             ElevatedButton(
                 onPressed: () async {
                   iAmLoading = true;
-                  setState(crutch);
+                  setState((){
+                    iAmLoading = true;});
                   generatedName =
                       await getSomeName(NameType.values[selectedSegment]);
-                  iAmLoading = false;
-                  setState(crutch);
-                  crutch();
+                  setState((){
+iAmLoading = false});
                 },
                 child: const Text('gen'))
           ],
@@ -146,6 +145,4 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
-
-  void crutch() {}
 }
