@@ -90,14 +90,15 @@ class _MyHomePageState extends State<MyHomePage> {
       case 0: loadedFirst = s;
       case 1: loadedSurname = s;
       case 2: loadedFull = s;
+    }
   } 
 
   String get generatedName {
-    return selectedSegment == 0
-        ? loadedFirst
-        : selectedSegment == 1
-            ? loadedSurname
-            : loadedFull;
+    return switch (selectedSegment) {
+      0 => loadedFirst,
+      1 => loadedSurname,
+      2 => loadedFull
+    }
   }
 
   @override
