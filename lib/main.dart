@@ -86,12 +86,11 @@ class _MyHomePageState extends State<MyHomePage> {
   GlobalKey textKey = GlobalKey(debugLabel: "text");
 
   set generatedName(String s) {
-    selectedSegment == 0
-        ? loadedFirst
-        : selectedSegment == 1
-            ? loadedSurname
-            : loadedFull = s;
-  }
+    switch (selectedSegment) {
+      case 0: loadedFirst = s;
+      case 1: loadedSurname = s;
+      case 2: loadedFull = s;
+  } 
 
   String get generatedName {
     return selectedSegment == 0
